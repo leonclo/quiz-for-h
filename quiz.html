@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospice & Palliative Medicine Study Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .instructions {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .instructions h2 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .question-block {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .question-block:hover {
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+        
+        .question-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+        
+        .question {
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+        
+        .options {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .options li {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .options li:hover {
+            background: #f1f3f5;
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .options li strong {
+            color: #667eea;
+            margin-right: 8px;
+        }
+        
+        .answer-key {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 50px;
+        }
+        
+        .answer-key h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .answer-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .answer-item strong {
+            font-size: 1.1em;
+        }
+        
+        .tips-box {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .tips-box h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .tips-box ul {
+            padding-left: 20px;
+        }
+        
+        .tips-box li {
+            margin: 8px 0;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .question-block {
+                break-inside: avoid;
+            }
+            
+            .answer-key {
+                break-before: page;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .answer-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Hospice & Palliative Medicine Study Guide</h1>
+            <p>Comprehensive Test Questions with Answer Key</p>
+        </div>
+        
+        <div class="content">
+            <div class="instructions">
+                <h2>📝 Instructions</h2>
+                <p>This study guide contains 50 high-yield questions covering key topics in Hospice & Palliative Medicine. Each question is designed to test your knowledge of:</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>Pain and symptom management</li>
+                    <li>Communication and goals of care</li>
+                    <li>Pediatric palliative care</li>
+                    <li>Ethics and decision-making</li>
+                    <li>Hospice regulations and Medicare benefits</li>
+                    <li>Pharmacology in palliative care</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Tip:</strong> Answer all questions first, then check your answers using the key at the end.</p>
+            </div>
+
+            <!-- SECTION 1: Pain and Symptom Management -->
+            <div class="section">
+                <div class="section-title">Section 1: Pain and Symptom Management</div>
+                
+                <div class="question-block">
+                    <span class="question-number">Question 1</span>
+                    <p class="question">A patient with end-stage liver disease and renal impairment requires IV opioid management. Which opioid is the BEST choice?</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Morphine sulfate</li>
+                        <li><strong>B.</strong> Hydromorphone</li>
+                        <li><strong>C.</strong> Fentanyl</li>
+                        <li><strong>D.</strong> Methadone</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 2</span>
+                    <p class="question">Which medication is preferred for managing terminal secretions while minimizing the risk of delirium?</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Hyoscyamine</li>
+                        <li><strong>B.</strong> Glycopyrrolate</li>
+                        <li><strong>C.</strong> Scopolamine</li>
+                        <li><strong>D.</strong> Atropine</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 3</span>
+                    <p class="question">A patient on high-dose morphine develops myoclonus and confusion. What is the BEST management approach?</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Increase morphine dose</li>
+                        <li><strong>B.</strong> Add haloperidol</li>
+                        <li><strong>C.</strong> Rotate to fentanyl and add benzodiazepine</li>
+                        <li><strong>D.</strong> Discontinue all opioids</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 4</span>
+                    <p class="question">First-line treatment for restless leg syndrome includes:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Clonazepam</li>
+                        <li><strong>B.</strong> Pramipexole</li>
+                        <li><strong>C.</strong> Opioids</li>
+                        <li><strong>D.</strong> Methylphenidate</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 5</span>
+                    <p class="question">For malignant hypercalcemia, which treatment provides the most effective long-term control?</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Calcitonin</li>
+                        <li><strong>B.</strong> Furosemide</li>
+                        <li><strong>C.</strong> Pamidronate</li>
+                        <li><strong>D.</strong> Prednisone</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Communication and Goals of Care -->
+            <div class="section">
+                <div class="section-title">Section 2: Communication and Goals of Care</div>
+                
+                <div class="question-block">
+                    <span class="question-number">Question 6</span>
+                    <p class="question">When a child asks directly about dying, the BEST initial response is to:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Immediately tell them the truth</li>
+                        <li><strong>B.</strong> Explore why they are asking</li>
+                        <li><strong>C.</strong> Refer them to their parents</li>
+                        <li><strong>D.</strong> Deny they are dying</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 7</span>
+                    <p class="question">A patient requests physician-assisted death. The FIRST step should be:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Explain it's illegal in your state</li>
+                        <li><strong>B.</strong> Offer palliative sedation</li>
+                        <li><strong>C.</strong> Prescribe antidepressants</li>
+                        <li><strong>D.</strong> Explore the reasoning behind the request</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 8</span>
+                    <p class="question">The most common reason patients request hastened death is:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Uncontrolled pain</li>
+                        <li><strong>B.</strong> Loss of autonomy</li>
+                        <li><strong>C.</strong> Depression</li>
+                        <li><strong>D.</strong> Financial concerns</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 9</span>
+                    <p class="question">When discussing prognosis with patients who have strong faith, studies show:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Avoid discussing prognosis to maintain hope</li>
+                        <li><strong>B.</strong> Open discussion doesn't increase anxiety or depression</li>
+                        <li><strong>C.</strong> Only discuss with chaplain present</li>
+                        <li><strong>D.</strong> Wait until patient asks directly</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 10</span>
+                    <p class="question">For a 4-year-old with cancer showing signs of awareness about dying through play, the team should:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Keep information confidential</li>
+                        <li><strong>B.</strong> Immediately tell parents</li>
+                        <li><strong>C.</strong> Refer to social work only</li>
+                        <li><strong>D.</strong> Inform the interdisciplinary team</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SECTION 3: Pediatric Palliative Care -->
+            <div class="section">
+                <div class="section-title">Section 3: Pediatric Palliative Care</div>
+                
+                <div class="question-block">
+                    <span class="question-number">Question 11</span>
+                    <p class="question">The median survival for live-born infants with anencephaly is approximately:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> 10 minutes</li>
+                        <li><strong>B.</strong> 1 hour</li>
+                        <li><strong>C.</strong> 24 hours</li>
+                        <li><strong>D.</strong> 1 week</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 12</span>
+                    <p class="question">For a nonverbal child showing grimacing, grunting, and tears, the FIRST assumption should be:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Seizure activity</li>
+                        <li><strong>B.</strong> Severe pain</li>
+                        <li><strong>C.</strong> Anxiety</li>
+                        <li><strong>D.</strong> Dehydration</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 13</span>
+                    <p class="question">When starting opioids in an adolescent reluctant due to fear of nausea, co-administer:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Gabapentin</li>
+                        <li><strong>B.</strong> Methylphenidate</li>
+                        <li><strong>C.</strong> Diphenhydramine</li>
+                        <li><strong>D.</strong> Ondansetron</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 14</span>
+                    <p class="question">Evidence-based intervention for a 4-year-old sibling of a dying child experiencing grief:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Maintain daily routines</li>
+                        <li><strong>B.</strong> Wait for child to ask questions</li>
+                        <li><strong>C.</strong> Cognitive-behavioral therapy</li>
+                        <li><strong>D.</strong> Child play therapy</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 15</span>
+                    <p class="question">Parents find which symptom MOST distressing when their child is dying of cancer?</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Seizures</li>
+                        <li><strong>B.</strong> Decreased energy/alertness</li>
+                        <li><strong>C.</strong> Nausea/vomiting</li>
+                        <li><strong>D.</strong> Skin changes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SECTION 4: Ethics and Decision-Making -->
+            <div class="section">
+                <div class="section-title">Section 4: Ethics and Decision-Making</div>
+                
+                <div class="question-block">
+                    <span class="question-number">Question 16</span>
+                    <p class="question">The most appropriate surrogate decision maker is typically the person who:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Is the oldest child</li>
+                        <li><strong>B.</strong> Has medical power of attorney</li>
+                        <li><strong>C.</strong> Knows the patient's values best</li>
+                        <li><strong>D.</strong> Is the legal spouse</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 17</span>
+                    <p class="question">A patient with DNAR needs emergency surgery. The appropriate action is:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Cancel surgery</li>
+                        <li><strong>B.</strong> Automatically suspend DNAR</li>
+                        <li><strong>C.</strong> Keep DNAR as is</li>
+                        <li><strong>D.</strong> Discuss perioperative modifications</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 18</span>
+                    <p class="question">Brain death determination requires all EXCEPT:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Absence of brainstem reflexes</li>
+                        <li><strong>B.</strong> Positive apnea test</li>
+                        <li><strong>C.</strong> EEG confirmation</li>
+                        <li><strong>D.</strong> Core temperature >32°C</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 19</span>
+                    <p class="question">For a Muslim family reluctant to discuss nondisclosure of diagnosis, first:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Insist patient must be told</li>
+                        <li><strong>B.</strong> Have patient sign without explaining</li>
+                        <li><strong>C.</strong> Ask patient about information preferences</li>
+                        <li><strong>D.</strong> Assume cultural appropriateness</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 20</span>
+                    <p class="question">Teenagers have confidentiality rights regarding:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> All medical decisions</li>
+                        <li><strong>B.</strong> Sexual health issues</li>
+                        <li><strong>C.</strong> Only if emancipated</li>
+                        <li><strong>D.</strong> Nothing until age 18</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SECTION 5: Hospice and Medicare -->
+            <div class="section">
+                <div class="section-title">Section 5: Hospice and Medicare Benefits</div>
+                
+                <div class="question-block">
+                    <span class="question-number">Question 21</span>
+                    <p class="question">Core services that must be employed by hospice include all EXCEPT:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Nursing</li>
+                        <li><strong>B.</strong> Music therapy</li>
+                        <li><strong>C.</strong> Bereavement counseling</li>
+                        <li><strong>D.</strong> Social work</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 22</span>
+                    <p class="question">Continuous home care requires minimum of:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> 4 hours of care</li>
+                        <li><strong>B.</strong> 8 hours of care</li>
+                        <li><strong>C.</strong> 12 hours of care</li>
+                        <li><strong>D.</strong> 24 hours of care</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 23</span>
+                    <p class="question">Respite care can be provided for maximum of:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> 3 consecutive days</li>
+                        <li><strong>B.</strong> 5 consecutive days</li>
+                        <li><strong>C.</strong> 7 consecutive days</li>
+                        <li><strong>D.</strong> 14 consecutive days</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 24</span>
+                    <p class="question">A patient with which cancer has prognosis <6 months despite treatment?</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Stage IV prostate with bone mets</li>
+                        <li><strong>B.</strong> Stage IV GIST on imatinib</li>
+                        <li><strong>C.</strong> Stage IV pancreatic, unresectable</li>
+                        <li><strong>D.</strong> Stage IV breast, ER/PR positive</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 25</span>
+                    <p class="question">For CHF hospice eligibility, primary requirement is:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> EF <30%</li>
+                        <li><strong>B.</strong> NYHA Class IV despite optimal treatment</li>
+                        <li><strong>C.</strong> Recent hospitalization</li>
+                        <li><strong>D.</strong> BNP >1000</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SECTION 6: Pharmacology -->
+            <div class="section">
+                <div class="section-title">Section 6: Pharmacology in Palliative Care</div>
+                
+                <div class="question-block">
+                    <span class="question-number">Question 26</span>
+                    <p class="question">Before starting methadone, obtain baseline EKG if:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Patient >65 years old</li>
+                        <li><strong>B.</strong> History of heart failure</li>
+                        <li><strong>C.</strong> On any other medications</li>
+                        <li><strong>D.</strong> All patients require baseline EKG</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 27</span>
+                    <p class="question">Ketamine's primary mechanism for analgesia is:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Mu opioid agonism</li>
+                        <li><strong>B.</strong> NMDA antagonism</li>
+                        <li><strong>C.</strong> GABA agonism</li>
+                        <li><strong>D.</strong> Calcium channel blockade</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 28</span>
+                    <p class="question">For cancer-related fatigue, first-line medication is:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Modafinil</li>
+                        <li><strong>B.</strong> Methylphenidate</li>
+                        <li><strong>C.</strong> Paroxetine</li>
+                        <li><strong>D.</strong> Caffeine</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 29</span>
+                    <p class="question">Tramadol carries increased risk of which potentially fatal side effect?</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Hypoglycemia</li>
+                        <li><strong>B.</strong> Myocardial infarction</li>
+                        <li><strong>C.</strong> Stroke</li>
+                        <li><strong>D.</strong> DVT</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 30</span>
+                    <p class="question">Best evidence for cancer anorexia/cachexia:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Dronabinol</li>
+                        <li><strong>B.</strong> Dexamethasone</li>
+                        <li><strong>C.</strong> Olanzapine</li>
+                        <li><strong>D.</strong> Megestrol acetate</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SECTION 7: Prognosis -->
+            <div class="section">
+                <div class="section-title">Section 7: Prognostication</div>
+                
+                <div class="question-block">
+                    <span class="question-number">Question 31</span>
+                    <p class="question">Most patients die within how long after ventilator withdrawal?</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Minutes</li>
+                        <li><strong>B.</strong> 1 hour</li>
+                        <li><strong>C.</strong> 24 hours</li>
+                        <li><strong>D.</strong> 3 days</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 32</span>
+                    <p class="question">After stopping dialysis, expected survival is approximately:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> 24-48 hours</li>
+                        <li><strong>B.</strong> 1 week</li>
+                        <li><strong>C.</strong> 2-3 weeks</li>
+                        <li><strong>D.</strong> 1 month</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 33</span>
+                    <p class="question">Sign with highest specificity for death within 12 hours:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> PPS ≤20%</li>
+                        <li><strong>B.</strong> Dysphagia to liquids</li>
+                        <li><strong>C.</strong> Peripheral cyanosis</li>
+                        <li><strong>D.</strong> Urine output <100mL/12hr</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 34</span>
+                    <p class="question">After cessation of oral intake, terminally ill patients typically survive:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> 3 days</li>
+                        <li><strong>B.</strong> 1-3 weeks</li>
+                        <li><strong>C.</strong> 4-6 weeks</li>
+                        <li><strong>D.</strong> 2 months</li>
+                    </ul>
+                </div>
+
+                <div class="question-block">
+                    <span class="question-number">Question 35</span>
+                    <p class="question">ECOG score indicating hospice eligibility (≤6 months):</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> ECOG 0</li>
+                        <li><strong>B.</strong> ECOG 1</li>
+                        <li><strong>C.</strong> ECOG ≥2</li>
+                        <li><strong>D.</strong> ECOG 5</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SECTION 8: Delirium and Cognitive Issues -->
+            <div class="section">
+                <div class="section-title">Section 8: Delirium and Cognitive Issues</div>
+                
+                <div class="question-block">
+                    <span class="question-number">Question 36</span>
+                    <p class="question">First-line treatment for terminal agitated delirium:</p>
+                    <ul class="options">
+                        <li><strong>A.</strong> Lorazepam
